@@ -1,0 +1,24 @@
+{
+  "reviews": [
+    {
+      "name": "John S.",
+      "rating": 4,
+      "comment": "Excellent service, quick turnaround, and fair pricing. Highly recommend!"
+    },
+    {
+      "name": "Emily R.",
+      "rating": 5,
+      "comment": "They diagnosed a tricky issue other shops couldn't find. Very knowledgeable staff."
+    },
+    {
+      "name": "Michael P.",
+      "rating": 5,
+      "comment": "Always friendly, professional, and take the time to explain the work needed."
+    },
+    {
+      "name": "Sarah K.",
+      "rating": 4,
+      "comment": "Great communication throughout the repair process. My car feels brand new again."
+    }
+  ]
+} 
