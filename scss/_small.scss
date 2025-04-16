@@ -1,0 +1,263 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*  Apply a natural box layout model to all elements  */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+} // end all elements
+
+
+/* --------------------------- BODY --------------------------- */
+body {
+    font-family: $defaultFont;
+    font-weight: $lightWeight;
+    min-width: 320px;
+    color: #000;
+}
+
+
+/* --------------------------- HEADER --------------------------- */
+#headerWrapper { background-color: #F0F0F0;}
+header {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    column-gap: $gutter;
+    align-items: center; //vertically
+    padding: .5rem $gutter;
+    margin: 0;
+    .phone-number {
+        justify-self: center; // Horizontal centering of the grid item
+        align-self: center; // Vertical centering within grid cell
+    }
+} // end header
+
+
+/* --------------------------- NAVIGATION STUFF GOES HERE --------------------------- */
+
+// add default trigram from heaven
+#theButton::before {
+    content: "\2630";
+}
+// style the button
+#theButton {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+#theNav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li a {
+        display: block;
+        padding: .75rem $gutter;
+        text-decoration: none;
+        color: #000; // Set nav link color to black
+    }
+    li.active a {}
+} // end unordered
+
+/* CSS for the open class */
+#theButton.open::before {
+    content: "\2715";
+}
+
+
+#theNav {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-out;
+    ul {
+        overflow: hidden;
+    }
+}
+
+#theNav.open {
+    grid-template-rows: 1fr;
+}
+
+
+
+
+
+/* --------------------------- MAIN --------------------------- */
+main {
+    h1 {
+        padding: 1rem $gutter .5rem $gutter;
+        font-size: 1.5rem;
+        font-weight: $normalWeight;
+        color: #000; // Change color to black
+    }
+    p {
+        padding: .5rem $gutter;
+        line-height: $leading;
+    }
+}// end main
+
+.porscheHero {
+    border-bottom: 1px solid black; // Black border only on the bottom
+    position: relative;
+    border-radius: 8px; // Add rounded corners
+    overflow: hidden; // Keep image within rounded corners
+    img {
+        width: 100%;
+        height: auto;
+        display: block
+    }
+    p {
+        position: absolute;
+        margin: 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(240, 255, 250, 0.4) 20%, rgba(240, 255, 250, 0.7) 50%, rgba(240, 255, 250, 0.4) 80%, transparent 100%);
+        padding: 0.75rem;
+        top: 70%;
+        width: 80%;
+        left: 10%;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+
+
+
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap; // Allow wrapping on smaller screens
+    justify-content: center; // Center the cards horizontally
+    gap: $gutter; // Keep the gap between cards
+    margin-top: 2rem; // Add space above the cards container
+    margin-bottom: 2rem; // Add space below the cards container
+}
+
+.card {
+    border: 1px solid $greyColor;
+    border-radius: 8px;
+    padding: $gutter;
+    flex: 0 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 1.5s ease; // Even slower transition
+}
+
+.card:hover {
+    background: linear-gradient(rgba(255, 235, 205, 0), rgba(255, 235, 205, 0.3)); // Soft sand gradient
+}
+
+.card-svg {
+    display: block; // Needed for margin auto centering
+    width: 10px; // Set desired width
+    height: auto; // Maintain aspect ratio
+    margin: 0 auto $gutter; // Center horizontally, add space below
+    transition: transform 0.3s ease; // Smooth transition for scaling
+}
+
+.card:hover .card-svg {
+    transform: scale(1.3); // Scale up SVG on hover
+}
+
+.card-link {
+    display: block;
+    width: fit-content;
+    margin: auto auto 0; // Auto Top/LR, 0 Bottom
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #555; // Restore original dark grey text
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-link:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+// Restore explicit centering for h2
+.card h2 {
+    text-align: center;
+}
+
+h1 {margin: 0;}
+
+/* --------------------------- REVIEWS --------------------------- */
+#reviews {
+    background-color: #f0f0f0; // Light grey background
+    padding: 2rem $gutter;
+    color: #000; // Dark text for light background
+    margin-top: 2rem; // Space above reviews section
+    margin-bottom: 2rem; // Space below reviews section
+    border-radius: 8px; // Add rounded corners
+}
+
+#reviews h2 {
+    text-align: center;
+    margin-bottom: 2.5rem; // Increased space below title
+}
+
+.review-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Two equal columns
+    gap: ($gutter * 1.5); // Gap between review cards
+}
+
+.review-card {
+    padding: $gutter;
+    border-radius: 8px; // Increased border-radius
+    text-align: center;
+    transition: background 1.5s ease;
+    // Optional: slightly lighter background for cards if needed
+    // background-color: #444;
+}
+
+.review-card:hover {
+    background: linear-gradient(rgba(253, 245, 230, 0), rgba(253, 245, 230, 0.6)); // Brighter sand gradient
+}
+
+.review-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.rating-stars {
+    color: #555555; // Dark grey for stars
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.card-svg {
+    display: block; // Needed for margin auto centering
+    width: 60px; // Set desired width
+    height: auto; // Maintain aspect ratio
+    margin: 0 auto $gutter; // Center horizontally, add space below
+}
+
+/* --------------------------- FOOTER --------------------------- */
+#footerWrapper {
+    background-color: $primaryColor
+} // end footer wrapper
+
+footer {
+    font-size: .75rem;
+    padding: 1rem $gutter;
+    text-align: center;
+    line-height: $leading;
+    color: #fdf5e6; // Old Lace
+    text-shadow: 0px -1px 5px rgba(255, 255, 255, 0.4);
+    a {}
+}// end footer
